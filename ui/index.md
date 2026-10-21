@@ -44,30 +44,34 @@ The app is written to `dist/`. Serve it from any web server that sends unknown p
 
 ## Sign in
 
-Open the UI and sign in in one of two ways:
+Open the UI at `/auth/login` (`/login` redirects there). You need an account in the API. Sign in in one of two ways:
 
 - With the email and password of the user an administrator created for you, then **Login**. **Forgot Password?** emails you a reset link.
 - With single sign-on: select **Continue with** followed by your provider's name. The buttons list the providers the API has set up; when there are none, the page says so.
 
-To sign out, select **Logout** at the bottom of the sidebar or in the profile menu.
+After sign-in, the start page is **Evidence**. If you opened a protected page first, the sign-in flow can return you to that page.
+
+To sign out, select **Logout** at the bottom of the sidebar or in the profile menu at the top right.
 
 ## Find your way around
 
-- The **sidebar** on the left leads to every area of the UI. You only see the entries your permissions allow. See [Navigation](./navigation.md).
-- The **header** shows **Active System**: the system security plan (SSP) that system-scoped pages, such as **Controls** and **Risk Register**, work on. Choose it under **Systems** > **Manage Systems**.
-- The **profile menu** at the top right opens **My Tasks**, with the number of workflow tasks waiting for you, **Preferences** and **Logout**.
+- The sidebar on the left groups the main areas of the UI. Open a group to see its entries. You only see entries your permissions allow; personal tasks and preferences are in the profile menu. See [Navigation](./navigation.md).
+- The header shows **Active System**: the system security plan (SSP) that system-scoped pages, such as **Controls** and **Risk Register**, work on. Select **Systems** > **Manage Systems**, then **Set Active** on a system's row. The header shows the selected system; it is not a system picker. The selection stays in this browser. **View** opens a system without changing which system is active.
+- The profile menu at the top right opens **My Tasks**, with the number of workflow tasks waiting for you, **Preferences** and **Logout**.
 
 What you can see and change depends on your roles in the API. See [Authentication and permissions](/api/authentication-and-permissions).
 
 ## Preferences
 
-Under **Preferences** you choose where CCF sends you notifications, by email or Slack:
+Open the profile menu (your initials at the top right), then select **Preferences**. The **User Preferences** page manages your own notifications; you do not need `admin:manage` to open it.
 
-- **Evidence Notifications**: evidence digest alerts.
-- **Task Notifications**: alerts when a task becomes available, and the daily task digest.
-- **Risk Notifications**: risk alerts.
+1. Under **Email Notifications**, choose an alert's **Select channels** dropdown. Despite the section heading, it can offer both **Email** and **Slack**.
+2. Select the available channels for **Evidence Digest**, **Task Available Alerts**, **Daily Task Digest** or **Risk Notifications**. Clear the selection to unsubscribe from that alert.
+3. Wait for **Preferences updated successfully!**. Each change saves immediately; there is no save button.
 
-To get notifications in Slack, link your Slack account in the **Slack** section. When the API doesn't have Slack set up, the section says so.
+**Email** is unavailable when the API's email provider is disabled. **Slack** requires both an enabled Slack provider and a linked account. Under **Account Information** > **Slack**, select **Link** to authorize the connection in Slack and return to preferences. **Unlink** removes the connection. If linking is not configured, the page says so. Ask your operator to configure the provider; choosing a channel alone does not configure delivery.
+
+**Account Information** also shows your email, name and authentication method. To work on assigned workflow tasks, return to the profile menu and select **My Tasks**. The badge shows the available-task count and displays **9+** above nine.
 
 ## Related
 
