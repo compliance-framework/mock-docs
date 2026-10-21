@@ -8,11 +8,21 @@ sidebar_position: 2
 
 These notes are for operators and developers using `mock-plugin-1` to test Continuous Compliance Framework release automation.
 
+## v0.1.5 (2026-10-14)
+
+### Highlights
+
+You can run the initialization-only release probe again. This release reverts the deliberate initialization failure introduced in `v0.1.4`. ([#42](https://github.com/compliance-framework/mock-plugin-1/pull/42))
+
+### Fixed
+
+- Calling `Init` before `Configure` no longer exits the plugin with status `1`. ([#42](https://github.com/compliance-framework/mock-plugin-1/pull/42))
+
 ## v0.1.4 (2026-10-14)
 
 ### Highlights
 
-This mock release deliberately makes initialization fail when you call `Init` before `Configure`, so you can test release-gate failure handling. ([#40](https://github.com/compliance-framework/mock-plugin-1/pull/40))
+This mock release deliberately makes initialization fail when you call `Init` before `Configure`, so you can test release-gate failure handling. `v0.1.5` reverts this change. ([#40](https://github.com/compliance-framework/mock-plugin-1/pull/40), [#42](https://github.com/compliance-framework/mock-plugin-1/pull/42))
 
 ### Changed
 
