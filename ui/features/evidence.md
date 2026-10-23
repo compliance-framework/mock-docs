@@ -125,4 +125,4 @@ You can also link filters from the **Controls** page; see [Controls and the Comp
 
 - [Controls and the Compliance Map](./controls.md)
 - [Risks](./risks.md)
-- [Agent overview](/agent/0.9/)
+- [Agent overview](/agent)

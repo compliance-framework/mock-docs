@@ -26,7 +26,7 @@ The controls of a system come from the profile attached to its system security p
 
 A control's implementation can also come from another system: **Inherited** marks what it inherits, and **Export** shares an implementation with other systems.
 
-When the API has AI set up, **AI evidence filter suggestions** proposes filters for the control. **Review in evidence filter suggestions** opens them; see [Evidence](./evidence.md#evidence-filters).
+When the API has AI set up, **AI evidence filter suggestions** proposes filters for the control. **Review in evidence filter suggestions** opens them; see [Evidence](./evidence.md#manage-evidence-filters).
 
 ## Follow the Compliance Map
 
