@@ -10,7 +10,7 @@ sidebar_position: 2
 
 This page is for **operators**. It lists the environment variables the API reads when it starts. You can also put them in a `.env` file in the API's working directory.
 
-Single sign-on, email, Slack, workflow and risk settings live in their own YAML files. The settings below only give their paths.
+Single sign-on, email, Slack, workflow and risk settings live in their own YAML files. The settings below only give their paths. For email and Slack setup, destinations and delivery tests, see [Notifications](./notifications.md).
 
 | Setting | Purpose | Type | Default | Example |
 |---|---|---|---|---|
