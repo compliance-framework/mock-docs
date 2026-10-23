@@ -20,7 +20,7 @@ To collapse the sidebar to abbreviations, select **Toggle Sidebar** on its edge.
 | **Controls** | How the active SSP implements each control of its profile. See [Controls and the Compliance Map](./features/controls.md). | none |
 | **Compliance Map** | The lineage from standards to policies, controls and evidence, with compliance and open risk at each step. | none |
 | **Risk Register** | The risks of the active SSP. See [Risks](./features/risks.md). | `risk:read` |
-| **Evidence Filters** | Saved evidence searches, and the controls and components they're linked to. See [Evidence](./features/evidence.md#evidence-filters). | `filter:read` |
+| **Evidence Filters** | Saved evidence searches, and the controls and components they're linked to. See [Evidence](./features/evidence.md#manage-evidence-filters). | `filter:read` |
 | **Workflows** > **Workflow Definitions** | The templates of recurring compliance activities. See [Workflows](./features/workflows.md). | `workflow-definition:read` |
 | **Workflows** > **Workflow Instances** | The workflows that run for the active SSP. | `workflow-instance:read` |
 | **Control Definitions** > **Catalogs** | Control catalogs. See [Control definitions](./features/control-definitions.md). | `catalog:read` |
