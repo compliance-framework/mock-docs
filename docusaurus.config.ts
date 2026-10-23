@@ -95,7 +95,7 @@ const pluginNavbarItems: NavbarItem[] = built
 const config: Config = {
   title: 'Compliance Framework',
   tagline: 'Compliance Framework is an open source project that helps you manage your compliance needs in a Cloud Native way.',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.svg',
 
   url: `https://${organizationName}.github.io`,
   baseUrl: `/${projectName}/`,
