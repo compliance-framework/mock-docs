@@ -20,7 +20,7 @@ Use workflows in the Continuous Compliance Framework (CCF) to schedule complianc
 - To see definitions and instances, you need `workflow-definition:read` and `workflow-instance:read`.
 - To follow the creation flows, you also need `create` permission for `workflow-definition`, `workflow-step-definition`, `workflow-instance`, `role-assignment` and `workflow-execution`, plus read access to their details and users. The `contributor` role includes these permissions.
 - Select an active system before creating an instance. See [Systems](./systems.md).
-- For scheduled runs, the API's workflow scheduler must be on: see `CCF_WORKFLOW_CONFIG` in the [API configuration reference](/api/0.21/configuration).
+- For scheduled runs, the API's workflow scheduler must be on: see `CCF_WORKFLOW_CONFIG` in the [API configuration reference](/api/configuration).
 
 ## Use it
 
