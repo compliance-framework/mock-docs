@@ -73,6 +73,7 @@ api users add
 - [Workflow scheduling and tasks](./workflows.md): configure recurring runs, dependencies and task completion.
 - [Risk and POA&M automation](./risk-and-poam-automation.md): configure risk reviews and remediation jobs.
 - [Dashboards and AI filter suggestions](./dashboard-suggestions.md): build evidence filters and review proposed control mappings.
+- [SSP sharing](./ssp-sharing.md): publish capabilities, subscribe across SSPs and reconcile shared responsibility drift.
 - [Notifications](./notifications.md): configure email and Slack delivery.
 - [Authentication and permissions](./authentication-and-permissions.md)
 - [Architecture](./architecture/index.md)
