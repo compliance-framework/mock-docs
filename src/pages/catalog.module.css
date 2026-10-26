@@ -1,0 +1,41 @@
+.layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.sidebar {
+  flex: 0 0 var(--doc-sidebar-width, 300px);
+  position: sticky;
+  top: calc(var(--ifm-navbar-height) + 1rem);
+}
+
+.menu {
+  max-height: calc(100vh - var(--ifm-navbar-height) - 2rem);
+  overflow-y: auto;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 996px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    flex: none;
+    position: static;
+    width: 100%;
+  }
+
+  .menu {
+    max-height: 16rem;
+  }
+
+  .content {
+    width: 100%;
+  }
+}
