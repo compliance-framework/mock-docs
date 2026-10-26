@@ -76,7 +76,7 @@ and report this information as compliance data.
 A single agent could for example:
 * Verify the SSH configuration on a host is secure
 * Verify the firewall is configured correctly, and doesn't open necessary ports
-* Scan authentication logs to ensure only authorised access
+* Scan authentication logs to ensure only authorized access
 * Ensure RAID configurations are correctly configured and running properly
 * Ensure vulnerabilities are monitored and mitigated
 * Ensure filesystem are encrypted, and access is correctly configured
@@ -108,7 +108,7 @@ The agent can be used to verify the Cloud Configuration of different teams withi
 are compliant with regulatory constraints. 
 
 A single agent could:
-* Verify that all resources are labelled for data sensitivity
+* Verify that all resources are labeled for data sensitivity
 * Ensure all resource are deployed in private network configurations
 * All database instances have encryption properly configured, and are deployed with engine specific security features
 * Ensure all security groups and firewalling is configured correctly

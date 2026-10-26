@@ -22,7 +22,7 @@ CCF is Open Source.
 
 ### Automated, Continuous Compliance Verification
 
-CCF enables organisations to continuously, and automatically collect evidence and validate compliance against regulatory 
+CCF enables organizations to continuously, and automatically collect evidence and validate compliance against regulatory
 security & operational requirements, reducing the manual effort involved in compliance reporting.
 
 Real-time notifications and alerts allow fast response to requirement drifts.
@@ -33,7 +33,7 @@ Powered by MongoDB, it acts as the single source of truth for compliance data.
 
 ### Open To Extension
 
-The CCF API accepts OSCAL-compliant data from anywhere. This allows your favourite tools to send compliance-related 
+The CCF API accepts OSCAL-compliant data from anywhere. This allows your favorite tools to send compliance-related
 information to it, and include it as part of your overall compliance reporting.
 
 This makes it easy to integrate with third party tools such as 
@@ -78,8 +78,8 @@ add more diverse data to the final compliance footprint.
 ### Policy as Code
 
 CCF uses Rego from OPA, and Kyverno-JSON as policy engines to validate the information collected by plugins.
-This allows organisations to continuously and iteratively manage their organisation policies, and directly map these
-to regulatory controls for easy reporting to auditory bodies.
+This allows organizations to continuously and iteratively manage their organization policies, and directly map these
+to regulatory controls for easy reporting to auditing bodies.
 
 ### OCI capable plugins and policies
 
@@ -87,7 +87,7 @@ CCF supports staged rollouts of compliance policies and plugins via OCI registri
 
 ### OSCAL-Compliant Reporting
 
-Generates structured compliance reports in NIST's OSCAL format which can be directly shared with auditory bodies to 
+Generates structured compliance reports in NIST's OSCAL format which can be directly shared with auditing bodies to
 verify regulatory compliance, and manage the full GRC lifecycle.
 
 - Real-time compliance dashboards

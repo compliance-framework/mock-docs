@@ -11,7 +11,7 @@ import ThemedImage from '@theme/ThemedImage';
 
 CCF makes assertions against the data collected by plugins, by using policies written in OPA, and soon Kyverno-JSON.
 
-This makes it flexible for organisations to write their own policies to verify their compliance, and expand on their 
+This makes it flexible for organizations to write their own policies to verify their compliance, and expand on their
 implementation to support a full compliance report.
 
 ## Policy extension
@@ -21,10 +21,10 @@ just `pass` or `fail` and enables policy authors to add details like risks, step
 by a specific policy. 
 
 This allows data-rich policies which map incredibly well to the ultimate compliance reports, and allows adding all 
-the minute details required by auditory bodies. 
+the minute details required by auditing bodies.
 
 An example of this is stating exactly what was validated, and how. CCF allows these details to be added directly in 
-its policy files, so each execution has all the necessary detail to fulfill auditory reporting requirements.  
+its policy files, so each execution has all the necessary detail to fulfill audit reporting requirements.
 
 ## Responsibilities
 
