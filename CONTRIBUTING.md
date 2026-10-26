@@ -97,3 +97,27 @@ Two other labels also stop the merge:
 - `factory:stop`: the factory takes no further action on this pull request at all.
 
 The factory only acts on these labels. It doesn't read comments for instructions such as "please wait".
+
+## Translations
+
+English (`en`) is the source language. Brazilian Portuguese (`pt-BR`) includes the general CCF introduction. Pages without a translation use the English source. The navbar language selector switches between locales. English keeps its existing URLs; Portuguese pages use the `pt-BR` prefix under the site's base URL.
+
+To preview Portuguese locally:
+
+```sh
+DOCS_PROJECT=mock-docs yarn start --locale pt-BR
+```
+
+To extract translation keys for navbar, footer, sidebar and theme labels:
+
+```sh
+yarn write-translations --locale pt-BR
+```
+
+General docs translations mirror the source path under `i18n/pt-BR/docusaurus-plugin-content-docs/current/`. For example, `docs/introduction/index.md` is translated in `i18n/pt-BR/docusaurus-plugin-content-docs/current/introduction/index.md`. An additional docs instance uses `docusaurus-plugin-content-docs-<id>` instead. Keep the document ID, section structure, UI labels, commands and code aligned with the English source. Update or flag the translation whenever you change its source.
+
+`yarn build` builds all configured locales for deployment. To check only Portuguese:
+
+```sh
+DOCS_PROJECT=mock-docs yarn build --locale pt-BR
+```

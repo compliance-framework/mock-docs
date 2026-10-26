@@ -29,7 +29,7 @@ Real-time notifications and alerts allow fast response to requirement drifts.
 
 ### Centralized Compliance API
 
-Powered by MongoDB, it acts as the single source of truth for compliance data.
+The API centralizes compliance data for collection and reporting.
 
 ### Open To Extension
 

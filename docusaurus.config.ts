@@ -110,7 +110,11 @@ const config: Config = {
 
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'pt-BR'],
+    localeConfigs: {
+      en: {label: 'English', htmlLang: 'en'},
+      'pt-BR': {label: 'Português (Brasil)', htmlLang: 'pt-BR'},
+    },
   },
 
   plugins: [
@@ -158,6 +162,7 @@ const config: Config = {
         ...instanceNavbarItems,
         ...catalogNavbarItems,
         ...pluginNavbarItems,
+        {type: 'localeDropdown', position: 'right'},
         {
           href: 'https://github.com/compliance-framework',
           label: 'GitHub',
