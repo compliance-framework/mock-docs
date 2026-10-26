@@ -189,6 +189,19 @@ curl --fail-with-body -X POST "$SSPS/$DOWNSTREAM/leveraged-controls/$LINK/attest
 
 Re-attestation takes no body. It requires a drifted link, records the current offering version, recomputes satisfaction, sets the link `active`, records the actor/time and marks a matching non-closed drift risk `remediated`. It does not recreate the inherited tree or replace satisfied entries. In v0.21.1, it does **not** reject a deprecated or revoked offering, or recheck its allow-list. Treat it as an explicit acceptance decision, not proof that the capability is still available. Verify the projection and risk after the operation.
 
+### Inspect lineage and inherited posture
+
+Lineage is a read-only view of catalog/control links, evidence, risks and inherited capabilities. With a user token and `lineage:read`, list active catalog roots, optionally scoping metrics to a downstream SSP:
+
+```sh
+curl --fail-with-body -sS --get "$API/lineage/roots" \
+  -H "Authorization: Bearer $READER_TOKEN" --data-urlencode "sspId=$DOWNSTREAM"
+```
+
+Use returned node `key` values rather than constructing identifiers. URL-encode the key as a single path segment (for example, with `jq -rn --arg key "$NODE_KEY" '$key|@uri'`). `GET /api/lineage/nodes/{encoded-key}/children` traverses children and accepts `page`/`limit`. Roots and children accept `sspId` and `componentId` metric scopes. For a control key, `/ssps` provides per-SSP posture and `/leverage?sspId={downstream-uuid}` returns offering origins, outstanding responsibilities, live responsibility posture and drift risk IDs. The leverage route ignores `componentId`; its `sspId` selects downstream rows. Invalid scope UUIDs or node keys return `400`, and unknown controls return `404` on leverage detail.
+
+Inspect both `status` and `satisfaction` on links. A full but drifted link is not the same as current inherited credit. Global compliance totals with SSPs count control/SSP pairs; a control tracked by several plans can contribute several times. SSP-scoped totals count in-scope controls. Declared `planned` or `not-applicable` posture does not rewrite the raw compliance denominator. See this version's **API reference**, under Lineage, for node response fields.
+
 ## Troubleshooting
 
 | Symptom | Verify and resolve |
@@ -209,4 +222,5 @@ Re-attestation takes no body. It requires a drifted link, records the current of
 - [Dashboards and AI filter suggestions](./dashboard-suggestions.md)
 - [Risk and POA&M automation](./risk-and-poam-automation.md)
 - [Notifications](./notifications.md)
+- [OSCAL import and export](./oscal-import-export.md): document interchange without subscriptions.
 - [API overview](./index.md)

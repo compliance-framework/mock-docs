@@ -146,6 +146,12 @@ Promotion creates an `open` item with source `risk-promotion`, links it to the r
 
 Acceptance is an alternative to promotion: `POST /api/risks/{id}/accept` requires an investigating risk, a nonempty `justification`, and a future `review-deadline`. It sets `risk-accepted`. Reviews can `extend` an accepted risk with `next-review-deadline`, or `reopen` an accepted or mitigating risk to `investigating`. A review decision of `implement` advances `mitigating-planned` to `mitigating-implemented`.
 
+### Prepare risk templates for evidence automation
+
+Risk templates provide the violation match, rendered risk statement, deduplication labels and optional remediation tasks used by evidence-driven creation. Operators with `admin:manage` manage `/api/admin/risk-templates` (list/create/get/update/delete). Use the **API reference**, under Risk Templates, for the payload. Use `plugin-id` to scope template publishing. Active templates are selected by `policy-package` matching evidence `_policy` labels, then `violation-ids` matching `_violation_id` props (an empty violation list matches any violation). Selection does not additionally filter by `_plugin`. Define `dedupe-label-keys` and `label-schema` for your evidence labels. Keep identity labels stable to avoid splitting one issue into separate risks. Template matching alone does not select an SSP: configure its evidence filters as well.
+
+CCF Agents publish the full desired set through `POST /api/agent/risk-templates/batch` with `risk-template:update` and the agent ingestion authentication policy. The body contains `plugin-id`, `policy-package` and a required `templates` array. Reconciliation atomically creates, updates and **deletes omitted templates** within that plugin/package scope; an empty array clears the set. Missing/null `templates` returns `400`. Success returns `200` with `data.created`, `updated`, `deleted` and `unchanged`. Do not send one changed template as though this were an incremental patch. Inspect templates and linked evidence before diagnosing missing or duplicate risks.
+
 ### Complete and verify remediation
 
 After the work is verified, update the item (HTTP `200`):

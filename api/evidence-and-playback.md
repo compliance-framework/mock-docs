@@ -125,6 +125,22 @@ curl --fail-with-body -sS -X POST "$API/api/evidence/$EVIDENCE_ID/verify" -H "Au
 
 For signed evidence, inspect `data.is_valid`, `data.checks`, and `data.errors`. Verification checks the current content hash, JWS and envelope consistency, and whether signing occurred within the submitter token's issued/not-before/expiry times. It does not require that original token to remain unexpired today. Unsigned evidence returns `status: "unsigned"` with `is_valid: false`. Keep the API's signing keys stable across restarts so historical signatures can still verify.
 
+### Configure subject templates
+
+Subject templates turn matching evidence labels into attributed subjects. The released evidence path materializes `component` templates with `source-mode: runtime-derived`; other template types are accepted for storage but do not produce evidence subjects. Every selector label and identity key must match/be present. Identity keys must also occur in `label-schema`. Stable identity labels let repeated observations reuse the same derived component; changing them can create a different subject.
+
+Operators with `admin:manage` can list, create, read and update `/api/admin/subject-templates`. For example, create a template for fictional lab evidence:
+
+```sh
+curl --fail-with-body -sS "$API/api/admin/subject-templates" \
+  -H "Authorization: Bearer $USER_TOKEN" -H 'Content-Type: application/json' \
+  --data '{"name":"Fictional lab service","type":"component","source-mode":"runtime-derived","component-type":"service","title-template":"Fictional lab service","identity-label-keys":["asset_id"],"selector-labels":[{"key":"_plugin","value":"fictional-lab"}],"label-schema":[{"key":"asset_id"}]}'
+```
+
+Success returns `201` with `data`. Submit evidence with labels `_plugin: fictional-lab` and `asset_id: fictional-service-1`, then inspect its attributed subjects through the evidence and subject retrieval routes above. This does not require inline playback or an uploaded policy artifact. An unmatched template or missing identity label does not derive a subject; strict enforcement can therefore reject the evidence.
+
+CCF Agents reconcile their complete template set with `POST /api/agent/subject-templates/batch`, using `subject-template:update` and the agent ingestion authentication policy. Its JSON body contains `plugin-id` and a required `templates` array. Templates are scoped by selector label `_plugin`; each batch item must include `_plugin` equal to the batch `plugin-id`. **Omitted templates are deleted** within that scope, and `templates: []` deletes the entire scoped set. Missing/null `templates` returns `400`. Success returns `200` with `data.created`, `updated`, `deleted`, `unchanged` and `warnings`; non-component templates produce warnings. Preserve the full desired set when reconciling. Use this version's **API reference**, under Subject Templates, for batch item fields and limits.
+
 ### Upload and attach artifacts
 
 Create `policy.rego` with the policy below. It uses Rego v1 syntax:

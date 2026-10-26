@@ -52,7 +52,8 @@ api users add
 | `api migrate up` | Creates the database schema, or upgrades it to this version. |
 | `api bootstrap` | Creates the JWT key files at the paths in `CCF_JWT_PRIVATE_KEY` and `CCF_JWT_PUBLIC_KEY`, or `private.pem` and `public.pem` when they're unset. |
 | `api users add` | Adds a user who signs in with a password. |
-| `api oscal import -f <file or directory>` | Imports OSCAL documents. |
+| `api oscal import -f <file or directory>` | Imports wrapped OSCAL JSON documents. |
+| `api oscal export -t <type> -o <file>` | Exports all objects of a supported type as a JSON array. See [OSCAL import and export](./oscal-import-export.md) for limits. |
 | `api authz export --format cedar` | Prints the authorization vocabulary, here as a Cedar schema. The other formats are `json`, `yaml` and `openfga`. |
 | `api help` | Lists every command. |
 
@@ -73,6 +74,7 @@ api users add
 - [Workflow scheduling and tasks](./workflows.md): configure recurring runs, dependencies and task completion.
 - [Risk and POA&M automation](./risk-and-poam-automation.md): configure risk reviews and remediation jobs.
 - [Dashboards and AI filter suggestions](./dashboard-suggestions.md): build evidence filters and review proposed control mappings.
+- [OSCAL import and export](./oscal-import-export.md): exchange JSON documents through the CLI and HTTP API.
 - [SSP sharing](./ssp-sharing.md): publish capabilities, subscribe across SSPs and reconcile shared responsibility drift.
 - [Notifications](./notifications.md): configure email and Slack delivery.
 - [Authentication and permissions](./authentication-and-permissions.md)
