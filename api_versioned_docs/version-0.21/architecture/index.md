@@ -10,7 +10,7 @@ import ThemedImage from '@theme/ThemedImage';
 # Architecture of The Continuous Compliance Framework
 
 CCF collects compliance information from a wide range of sources, and compiles them into a single, holistic compliance view. 
-CCF is designed with the express purpose of being distributed, to avoid the need for centralised and elevated access,
+CCF is designed with the express purpose of being distributed, to avoid the need for centralized and elevated access,
 keeping it as secure as possible.
 
 <ThemedImage
@@ -26,14 +26,14 @@ central reporting API. Compliance information can then be inspected through the 
 and ultimately exported to an OSCAL document, which can be sent to auditors as compliance documentation.
 
 The CCF API is open-to-extension, and can therefore accept additional compliance information from external sources to 
-compliment the overall compliance report, and generate a more complete view of compliance across the business. 
+complement the overall compliance report, and generate a more complete view of compliance across the business.
 
 CCF aims to be as extensible as possible, allowing compliance information and verification to be sent from 
 wherever it is applicable.
 
 ## API
 
-The CCF API conforms to the OSCAL schema, allowing a standardised way of sending additional compliance information, 
+The CCF API conforms to the OSCAL schema, allowing a standardized way of sending additional compliance information,
 in a format that is defined by auditors and regulatory assessors. 
 
 CCF adds a few additional fields and values to the OSCAL schema, to make it more automatable and accessible to automation engineers.
@@ -43,10 +43,10 @@ CCF adds a few additional fields and values to the OSCAL schema, to make it more
 The plugin system is designed to make CCF as extensible as possible. Plugins are responsible for gathering information about 
 specific systems and configurations, and making this information available to the policy engine for verification. 
 
-A simple example of this is ensuring everybody in an organisation has 2-factor authentication enabled. 
+A simple example of this is ensuring everybody in an organization has 2-factor authentication enabled.
 
 The plugin is responsible for collecting the configuration from an authentication provider like Google or SSO. It has 
-specialised knowledge of how specific systems function, and how to collect the relevant information from them.
+specialized knowledge of how specific systems function, and how to collect the relevant information from them.
 
 ## Policies
 

@@ -32,7 +32,7 @@ Once completed, the CCF Plugins generate OSCAL-compliant results, which excludes
 these to the CCF Agent. The sensitive data is then forgotten until the next compliance checkpoint. 
 
 This means that nothing - not even the CCF Agent - has access to any sensitive data collected by the CCF Plugins, and 
-it is kept private throughout the entire compliance lifecycle.x 
+it is kept private throughout the entire compliance lifecycle.
 
 ## Responsibilities
 
@@ -40,7 +40,7 @@ The Plugin has a few responsibilities
 
 ### Gathering Relevant Data
 
-The plugin is a specialised collector of relevant information for a specific subsystem. It knows how to gather data
+The plugin is a specialized collector of relevant information for a specific subsystem. It knows how to gather data
 about specific systems, tools, products, APIs etc. which is important for verifying compliance. 
 
 Plugins could for example be used to gather data about specific tooling such as SSH, Kubernetes, Linux, Firewalls, 
@@ -50,7 +50,7 @@ Cloud Providers, Security Vulnerabilities, Container Vulnerabilities etc.
 
 Once the plugin has gathered the necessary data to make assertions, it turns the collected data into a 
 JSON object. This is necessary in order to write policies against the collected data, and verify that specific keys and 
-values are within limits or bounds of the specific policies for the organisation, or regulations. 
+values are within limits or bounds of the specific policies for the organization, or regulations.
 
 ### Compiling policy output into OSCAL results
 

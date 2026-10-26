@@ -23,6 +23,6 @@ The CCF UI is used to inspect the results flooding into CCF, compile them into a
 dashboards for continuous monitoring of controls. 
 
 The Central API compiles all the ingested results into a complete OSCAL document, which is used to continuously 
-report compliance information to auditory bodies.
+report compliance information to auditing bodies.
 
 [Introduction](./introduction)
