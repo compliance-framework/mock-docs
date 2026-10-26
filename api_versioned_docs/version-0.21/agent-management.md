@@ -29,7 +29,7 @@ Logging, evidence settings, plugin schedules, labels, policy inputs and disablin
 
 A new plugin or policy source is safe when an enabled plugin in the local file already uses it, or it matches `remote_config.trusted_sources`. These case-sensitive globs use `path.Match`: `*` does not cross `/`. Local paths are never trusted. Introducing a local source is forbidden unless the host uses both `apply_all` and `allow_local_sources: true`.
 
-Plugin config changes are safe when the key matches `remote_config.overridable_config_flags` (for example `fictional-checker:region`); otherwise they are unsafe. New `${env:NAME}` references are unsafe. References to `CCF_API_AUTH_*` are forbidden. Re-enabling a locally disabled plugin is unsafe unless its source is trusted; its sources and environment references still undergo classification. See the [released CCF Agent configuration reference](/agent/0.9/configuration) for all host settings and defaults.
+Plugin config changes are safe when the key matches `remote_config.overridable_config_flags` (for example `fictional-checker:region`); otherwise they are unsafe. New `${env:NAME}` references are unsafe. References to `CCF_API_AUTH_*` are forbidden. Re-enabling a locally disabled plugin is unsafe unless its source is trusted; its sources and environment references still undergo classification. See the released CCF Agent `0.9` configuration reference for all host settings and defaults.
 
 ## Before you start
 
@@ -103,7 +103,7 @@ remote_config:
   poll_interval: 60s
 ```
 
-Keep the existing `api`, `daemon` and plugin configuration. This is a fragment, not a complete agent file. The polling minimum is `15s`. Follow the [CCF Agent configuration reference](/agent/0.9/configuration) for credentials, trusted sources, safe config flags and persistent instance state.
+Keep the existing `api`, `daemon` and plugin configuration. This is a fragment, not a complete agent file. The polling minimum is `15s`. Follow the released CCF Agent `0.9` configuration reference for credentials, trusted sources, safe config flags and persistent instance state.
 
 ## Use it
 
@@ -232,7 +232,7 @@ API defaults come from v0.21.1. The [API configuration reference](./configuratio
 | `CCF_AGENT_INSTANCE_STALE_AFTER` | Reports or heartbeats within this duration keep instances fresh for validation and cap handling. *(new in 0.21)* | `duration` | `10m` | `15m` |
 | `CCF_AGENT_MAX_INSTANCES` | Cap instances not yet eligible for pruning, per agent identity. *(new in 0.21)* | `int` | `500` | `250` |
 
-Unset or non-positive duration/cap values use the defaults. At the cap, a new instance replaces the oldest stale instance. If every counted instance is fresh, a new report gets `409` and its heartbeats are not recorded. Existing instances can still report. Back off instead of generating more instance IDs. Pin one-shot instance identity as described in the [CCF Agent reference](/agent/0.9/configuration). Deleting an agent deletes its instances and revision history.
+Unset or non-positive duration/cap values use the defaults. At the cap, a new instance replaces the oldest stale instance. If every counted instance is fresh, a new report gets `409` and its heartbeats are not recorded. Existing instances can still report. Back off instead of generating more instance IDs. Pin one-shot instance identity as described in the released CCF Agent `0.9` configuration reference. Deleting an agent deletes its instances and revision history.
 
 ### Keep secrets on the host
 
@@ -260,4 +260,4 @@ Instance `base` and `effective` documents and preview effective configs are alwa
 - [API overview](./index.md)
 - [Authentication and permissions](./authentication-and-permissions.md)
 - [API configuration reference](./configuration.md)
-- [Released CCF Agent configuration reference](/agent/0.9/configuration)
+- released CCF Agent `0.9` configuration reference
