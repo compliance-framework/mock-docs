@@ -72,6 +72,7 @@ api users add
 - [Evidence artifacts and Rego playback](./evidence-and-playback.md): submit evidence and reproduce policy evaluations.
 - [Workflow scheduling and tasks](./workflows.md): configure recurring runs, dependencies and task completion.
 - [Risk and POA&M automation](./risk-and-poam-automation.md): configure risk reviews and remediation jobs.
+- [Dashboards and AI filter suggestions](./dashboard-suggestions.md): build evidence filters and review proposed control mappings.
 - [Notifications](./notifications.md): configure email and Slack delivery.
 - [Authentication and permissions](./authentication-and-permissions.md)
 - [Architecture](./architecture/index.md)
