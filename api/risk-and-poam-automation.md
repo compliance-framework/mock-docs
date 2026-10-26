@@ -29,7 +29,7 @@ State changes and notification delivery are separate. An overdue transition can 
 - Use an authenticated user token. Creation requires `create` on `risk`; reading requires `read`; updates, acceptance and reviews require `update`; promotion requires `promote`. Completing remediation requires `update` on `poam_item`. The bundled Cedar `admin`, `contributor` and `auditor` roles grant these operations; `viewer` cannot mutate them. The default `builtin` driver permits authenticated users on these resources. Check your configured policy through [Authentication and permissions](./authentication-and-permissions.md).
 - Configure delivery providers and user destinations using [Notifications](./notifications.md). Set `CCF_WEB_BASE_URL` to your UI address for notification links.
 
-For interactive register operations, use the released [UI risk guide](../ui_versioned_docs/version-2.12/features/risks.md). This page uses API requests and does not require a UI recording.
+For interactive register operations, use the released UI `2.12` risk guide. This page uses API requests and does not require a UI recording.
 
 ## Enable it
 
@@ -181,7 +181,7 @@ On the transition to `completed`, the handler advances linked risks from `mitiga
 
 ## Related
 
-- [UI risk guide](../ui_versioned_docs/version-2.12/features/risks.md): interactive register operations.
+- UI `2.12` risk guide: interactive register operations.
 - [Notifications](./notifications.md): providers, subscriptions and delivery checks.
 - [Evidence artifacts and Rego playback](./evidence-and-playback.md): evidence submission and diagnosis.
 - [Authentication and permissions](./authentication-and-permissions.md): policy drivers and roles.
