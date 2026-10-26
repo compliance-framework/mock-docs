@@ -1,0 +1,14 @@
+{
+  "link.title.Docs": {
+    "message": "Documentação"
+  },
+  "link.title.Community": {
+    "message": "Comunidade"
+  },
+  "link.item.label.Introduction": {
+    "message": "Introdução"
+  },
+  "link.item.label.Glossary": {
+    "message": "Glossário"
+  }
+}
