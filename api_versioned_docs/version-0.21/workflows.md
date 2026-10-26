@@ -6,7 +6,7 @@ sidebar_position: 8
 
 # Workflow scheduling and tasks
 
-Use the Continuous Compliance Framework (CCF) API to schedule recurring compliance work and collect evidence as users complete tasks. This guide is for operators and developers integrating with API `v0.21.1`; for screen-based steps, see the [released UI workflow guide](../../ui_versioned_docs/version-2.12/features/workflows.md).
+Use the Continuous Compliance Framework (CCF) API to schedule recurring compliance work and collect evidence as users complete tasks. This guide is for operators and developers integrating with API `v0.21.1`; for screen-based steps, see the released UI `2.12` workflow guide.
 
 ## How it works
 
@@ -237,7 +237,7 @@ Repeat with `notificationKind=workflow_task_digest` or `workflow_execution_faile
 
 ## Related
 
-- [Released UI workflow guide](../../ui_versioned_docs/version-2.12/features/workflows.md)
+- released UI `2.12` workflow guide
 - [Notifications](./notifications.md)
 - [Authentication and permissions](./authentication-and-permissions.md)
 - [Configuration reference](./configuration.md)
