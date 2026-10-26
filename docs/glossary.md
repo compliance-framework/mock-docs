@@ -77,6 +77,13 @@ If there is a dispute about the meaning of a term in an issue, then this should 
 | SMF24                         | See 'Senior Management Function 24'                                                                                                                                                                                                             |
 | Variance                      | Deviations or exceptions from established security standards, policies, or procedures.                                                                                                                                                          |
 
+| Downstream SSP | An SSP that consumes provided capabilities from an upstream SSP through an offering subscription. |
+| Leverage Link | A CCF record connecting a downstream inherited capability to its upstream SSP, offering and recorded offering version. |
+| Provided Capability | An upstream statement-level implementation exposed through an OSCAL export provided entry and referenced by an offering item. |
+| Shared Responsibility | The division of implementation duties between an upstream provider and downstream consumers. An export responsibility identifies a duty the consumer must discharge for a provided capability. |
+| SSP Offering | A curated set of upstream SSP capabilities that consumers can discover and subscribe to after publication. |
+| Upstream SSP | An SSP that owns and publishes capabilities for downstream SSPs to consume. |
+
 ## Internal Architecture Glossary
 
 These terms are when we refer to the internal architecture that composes Compliance Framework. We should stick to it to not make our lives harder.
@@ -97,9 +104,3 @@ These terms are when we refer to the internal architecture that composes Complia
 | [NIST Special Publication 800-37 Revision 2](https://csrc.nist.gov/publications/detail/sp/800-37/rev-2/final) |                                                                                                                                                                 |
 | [Example Control](https://pages.nist.gov/OSCAL/learn/concepts/layer/control/catalog/sp800-53rev5-example/) |                                                                                                                                                                          |
 | [Example Catalog](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) |                                                                                                                                                                                                         |
-| Downstream SSP | An SSP that consumes provided capabilities from an upstream SSP through an offering subscription. |
-| Leverage Link | A CCF record connecting a downstream inherited capability to its upstream SSP, offering and recorded offering version. |
-| Provided Capability | An upstream statement-level implementation exposed through an OSCAL export provided entry and referenced by an offering item. |
-| Shared Responsibility | The division of implementation duties between an upstream provider and downstream consumers. An export responsibility identifies a duty the consumer must discharge for a provided capability. |
-| SSP Offering | A curated set of upstream SSP capabilities that consumers can discover and subscribe to after publication. |
-| Upstream SSP | An SSP that owns and publishes capabilities for downstream SSPs to consume. |
