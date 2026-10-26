@@ -6,6 +6,7 @@ import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import Link from '@docusaurus/Link';
 import catalog from '@site/src/data/catalog.json';
+import styles from './catalog.module.css';
 
 type Plugin = {
   id: string;
@@ -27,54 +28,68 @@ function repoName(repo: string): string {
 export default function Catalog(): ReactNode {
   return (
     <Layout title="Catalog" description="Every CCF plugin, with its newest release and the policy bundles that work with it.">
-      <main className="container margin-vert--lg">
-        <Heading as="h1">Catalog</Heading>
-        <p>
-          Every released plugin of the Continuous Compliance Framework (CCF), with its newest release and the policy
-          bundles that work with it. Open a plugin for its configuration, the evidence it collects and its policies
-          catalog, in each of its version lines.
-        </p>
-        <table>
-          <thead>
-            <tr>
-              <th>Plugin</th>
-              <th>Latest version</th>
-              <th>Policy bundles</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            {plugins.map((p) => (
-              <tr key={p.id}>
-                <td>
-                  <Link to={`/${p.route}`}>{p.label}</Link>
-                  <br />
-                  <code>{repoName(p.repo)}</code>
-                </td>
-                <td>
-                  <Link href={`https://github.com/${p.repo}/releases/tag/${p.version}`}>
-                    <code>{p.version}</code>
-                  </Link>
-                </td>
-                <td>
-                  {p.policies.length === 0
-                    ? 'None mapped yet'
-                    : p.policies.map((b, i) => (
-                        <React.Fragment key={b.repo}>
-                          {i > 0 && <br />}
-                          <Link href={`https://github.com/${b.repo}`}>
-                            <code>{repoName(b.repo)}</code>
-                          </Link>{' '}
-                          <code>{b.version}</code>
-                        </React.Fragment>
-                      ))}
-                </td>
-                <td>{p.description}</td>
+      <div className={`container margin-vert--lg ${styles.layout}`}>
+        <aside className={styles.sidebar}>
+          <nav aria-label="Plugins" className={`menu ${styles.menu}`}>
+            <Heading as="h2" className="padding-horiz--sm">Plugins</Heading>
+            <ul className="menu__list">
+              {plugins.map((p) => (
+                <li key={p.id} className="menu__list-item">
+                  <Link className="menu__link" to={`/${p.route}`}>{p.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
+        <main className={styles.content}>
+          <Heading as="h1">Catalog</Heading>
+          <p>
+            Every released plugin of the Continuous Compliance Framework (CCF), with its newest release and the policy
+            bundles that work with it. Open a plugin for its configuration, the evidence it collects and its policies
+            catalog, in each of its version lines.
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Plugin</th>
+                <th>Latest version</th>
+                <th>Policy bundles</th>
+                <th>Description</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </main>
+            </thead>
+            <tbody>
+              {plugins.map((p) => (
+                <tr key={p.id}>
+                  <td>
+                    <Link to={`/${p.route}`}>{p.label}</Link>
+                    <br />
+                    <code>{repoName(p.repo)}</code>
+                  </td>
+                  <td>
+                    <Link href={`https://github.com/${p.repo}/releases/tag/${p.version}`}>
+                      <code>{p.version}</code>
+                    </Link>
+                  </td>
+                  <td>
+                    {p.policies.length === 0
+                      ? 'None mapped yet'
+                      : p.policies.map((b, i) => (
+                          <React.Fragment key={b.repo}>
+                            {i > 0 && <br />}
+                            <Link href={`https://github.com/${b.repo}`}>
+                              <code>{repoName(b.repo)}</code>
+                            </Link>{' '}
+                            <code>{b.version}</code>
+                          </React.Fragment>
+                        ))}
+                  </td>
+                  <td>{p.description}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </main>
+      </div>
     </Layout>
   );
 }
