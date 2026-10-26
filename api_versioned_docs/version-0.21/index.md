@@ -71,6 +71,7 @@ api users add
 - [Agent management](./agent-management.md): enroll agents and manage remote configuration.
 - [Evidence artifacts and Rego playback](./evidence-and-playback.md): submit evidence and reproduce policy evaluations.
 - [Workflow scheduling and tasks](./workflows.md): configure recurring runs, dependencies and task completion.
+- [Risk and POA&M automation](./risk-and-poam-automation.md): configure risk reviews and remediation jobs.
 - [Notifications](./notifications.md): configure email and Slack delivery.
 - [Authentication and permissions](./authentication-and-permissions.md)
 - [Architecture](./architecture/index.md)
