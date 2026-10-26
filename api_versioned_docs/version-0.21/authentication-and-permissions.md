@@ -6,7 +6,7 @@ sidebar_position: 3
 
 # Authentication and permissions
 
-The API checks who's calling (authentication) and what they may do (authorization). This page is for **operators** who set up sign-in and roles, and **developers** who call the API.
+The Continuous Compliance Framework (CCF) API checks who's calling (authentication) and what they may do (authorization). This page is for **operators** who set up sign-in and roles, and **developers** who call the API.
 
 ## How it works
 
@@ -24,7 +24,7 @@ Send the token as `Authorization: Bearer <token>`. The UI uses the cookie instea
 
 To verify tokens yourself, get the API's public key from `GET /api/auth/publickey` (a JSON Web Key) or `GET /api/auth/publickey.pub` (PEM). The signing keys come from `CCF_JWT_PRIVATE_KEY` and `CCF_JWT_PUBLIC_KEY`. Without them the API makes a new key pair at each start, and every token stops working when it restarts.
 
-SSO providers (OIDC or OAuth2, for example Google or GitHub) are set up in the SSO configuration file, `sso.yaml` by default (`CCF_SSO_CONFIG`).
+Configure OIDC or OAuth providers in `sso.yaml` (`CCF_SSO_CONFIG`). See [Single sign-on](./sso.md) for complete examples, account linking and login group requirements.
 
 The endpoints for agent heartbeats, evidence and Rego playback also take requests without a token, unless you set `CCF_STRICT_DISABLE_PUBLIC_AGENT_ENDPOINTS=true`. The authorization engine still decides whether such a request is allowed.
 
@@ -34,7 +34,7 @@ Every request goes through the authorization engine you pick with `CCF_AUTHZ_DRI
 
 | Driver | What it allows |
 |---|---|
-| `builtin` (default) | Every signed-in user can do everything except administration and agent management, which need admin access. Users who sign in with a password always have admin access. SSO users have it when they belong to one of their provider's `required_admin_groups`, or when the provider lists none. Agents may only register, send evidence and heartbeats, and sync their configuration. |
+| `builtin` (default) | Every signed-in user can do everything except administration and agent management, which need admin access. Accounts whose `auth_method` is not `sso` have admin access. SSO users have it when every `required_admin_groups` entry is present in the union of their latest SSO link's mapped groups and native CCF memberships, or when the provider lists none. Disabling SSO also skips provider admin group enforcement. Agents may only register, send evidence and heartbeats, and sync their configuration. |
 | `cedar` | Each user, group and agent gets a role from the role assignment file, and the bundled role policies decide. Anyone without a role is denied everything. |
 | `authzen` | Every decision goes to your own policy decision point, which implements the AuthZen API, at `CCF_AUTHZ_ENDPOINT`. |
 
@@ -94,7 +94,7 @@ agents: agent
 # anonymous: viewer
 ```
 
-A user's roles are their own role plus the role of each of their groups. In 0.21 users don't carry their groups yet, so the `groups` section has no effect: assign roles to users directly.
+A user's roles are their direct role plus the role of each native CCF group they belong to. SSO maps provider claims into native memberships at login; unmapped external groups do not reach Cedar. Manual memberships also apply. Group membership is resolved from the database for each request, rather than stored in the JWT. `required_admin_groups` applies to builtin authorization and does not assign a Cedar role. See [SSO groups and authorization](./sso.md#groups-and-authorization).
 
 ## Write your own policies
 
@@ -104,13 +104,25 @@ To go beyond the bundled roles without changing CCF, put your own Cedar policy f
 api authz export --format cedar
 ```
 
+## Local-account password recovery
+
+Password recovery applies to accounts whose `auth_method` is empty or `password`. Recover SSO credentials at your identity provider; an account linked to SSO cannot use this local reset flow.
+
+1. Configure email delivery using [Notifications](./notifications.md). Set `CCF_WEB_BASE_URL` to the UI address used in reset links, independently of SSO's `base_url`.
+2. Request a reset with `POST /api/auth/forgot-password` and JSON `{"email":"operator@example.com"}`. A successful request returns `200` with the same generic message for unknown emails, SSO accounts and disabled email. This response does not prove that an email was sent. Check delivery logs and the worker when email is queued.
+3. Follow the email link to `CCF_WEB_BASE_URL/auth/password-reset?token=...`. The signed token expires after **15 minutes**. Submit `POST /api/auth/password-reset` with JSON fields `token` (the emailed token) and `password` (your new password). Success returns `200`; an invalid or expired token returns `401`. Then sign in with the new password.
+
+The reset token uses the API's JWT keys. Keep those keys stable so a restart does not invalidate outstanding reset links.
+
 ## Troubleshooting
 
 - **Every request gets `401 Unauthorized` after a restart:** the API generated a new key pair. Set `CCF_JWT_PRIVATE_KEY` and `CCF_JWT_PUBLIC_KEY` so the keys survive restarts.
-- **Every user is denied with the `cedar` driver:** check that the role assignment file exists at `CCF_AUTHZ_ROLE_ASSIGNMENTS` and assigns each user a role. Group assignments don't apply yet.
+- **Every user is denied with the `cedar` driver:** check that the role assignment file exists at `CCF_AUTHZ_ROLE_ASSIGNMENTS` and assigns each user a role. For SSO group roles, check native memberships and the provider mapping; sign-in alone does not grant a role.
 - **The sign-in cookie isn't kept over plain HTTP:** the cookie is `Secure` unless `CCF_ENVIRONMENT` is `local` or `development`.
 
 ## Related
 
 - [Configuration reference](./configuration.md): every `CCF_AUTHZ_*`, `CCF_JWT_*` and `CCF_SSO_CONFIG` setting.
+- [Single sign-on](./sso.md)
+- [Notifications](./notifications.md): email delivery for password recovery.
 - [API overview](./index.md)
