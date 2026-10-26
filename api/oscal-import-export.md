@@ -24,7 +24,7 @@ The CLI connects directly to the configured database. HTTP import uses the runni
 
 Use one model wrapper per input file. CLI import creates documents for new UUIDs and updates existing documents additively: removed associations and zero-value fields are not deleted or cleared. It synchronizes profile controls. HTTP import uses `FirstOrCreate`: an existing UUID is not merged or updated. An existing SSP explicitly reports that nothing was written while still returning `success: true`.
 
-Document interchange does not publish an SSP capability or create a downstream subscription. For offerings, inherited responsibilities and drift, use [SSP sharing](./ssp-sharing.md). For model concepts, see [OSCAL](../docs/oscal/index.md) and [risks, findings and observations](../docs/oscal/risks-findings-observations.md).
+Document interchange does not publish an SSP capability or create a downstream subscription. For offerings, inherited responsibilities and drift, use [SSP sharing](./ssp-sharing.md). For model concepts, see OSCAL (general documentation) and risks, findings and observations (general documentation).
 
 ## Before you start
 
@@ -181,5 +181,5 @@ The ordinary catalog list/get loads metadata; `/full` also loads selected group 
 - [Configuration reference](./configuration.md)
 - [Authentication and permissions](./authentication-and-permissions.md)
 - [SSP sharing](./ssp-sharing.md)
-- [OSCAL models](../docs/oscal/index.md)
-- [Risks, findings and observations](../docs/oscal/risks-findings-observations.md)
+- OSCAL models (general documentation)
+- Risks, findings and observations (general documentation)
