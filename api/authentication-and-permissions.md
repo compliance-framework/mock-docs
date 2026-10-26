@@ -34,7 +34,7 @@ Every request goes through the authorization engine you pick with `CCF_AUTHZ_DRI
 
 | Driver | What it allows |
 |---|---|
-| `builtin` (default) | Every signed-in user can do everything except administration and agent management, which need admin access. Users who sign in with a password always have admin access. SSO users have it when every `required_admin_groups` entry is present in the union of their latest SSO link's mapped groups and native CCF memberships, or when the provider lists none. Agents may only register, send evidence and heartbeats, and sync their configuration. |
+| `builtin` (default) | Every signed-in user can do everything except administration and agent management, which need admin access. Accounts whose `auth_method` is not `sso` have admin access. SSO users have it when every `required_admin_groups` entry is present in the union of their latest SSO link's mapped groups and native CCF memberships, or when the provider lists none. Disabling SSO also skips provider admin group enforcement. Agents may only register, send evidence and heartbeats, and sync their configuration. |
 | `cedar` | Each user, group and agent gets a role from the role assignment file, and the bundled role policies decide. Anyone without a role is denied everything. |
 | `authzen` | Every decision goes to your own policy decision point, which implements the AuthZen API, at `CCF_AUTHZ_ENDPOINT`. |
 
