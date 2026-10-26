@@ -67,6 +67,7 @@ api users add
 ## Related
 
 - [Configuration reference](./configuration.md)
+- [Single sign-on](./sso.md): configure providers and verify sign-in.
 - [Notifications](./notifications.md): configure email and Slack delivery.
 - [Authentication and permissions](./authentication-and-permissions.md)
 - [Architecture](./architecture/index.md)
