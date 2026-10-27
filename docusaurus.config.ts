@@ -95,7 +95,7 @@ const pluginNavbarItems: NavbarItem[] = built
 const config: Config = {
   title: 'Compliance Framework',
   tagline: 'Compliance Framework is an open source project that helps you manage your compliance needs in a Cloud Native way.',
-  favicon: 'img/favicon.svg',
+  favicon: 'img/ccf-logo.png',
 
   url: `https://${organizationName}.github.io`,
   baseUrl: `/${projectName}/`,
@@ -151,11 +151,12 @@ const config: Config = {
   ],
 
   themeConfig: {
+    image: 'img/ccf-logo.png',
     navbar: {
       title: 'Compliance Framework',
       logo: {
         alt: 'Compliance Framework Logo',
-        src: 'img/logo.svg',
+        src: 'img/ccf-logo.png',
       },
       items: [
         {type: 'doc', docId: 'introduction/index', label: 'CCF'},
