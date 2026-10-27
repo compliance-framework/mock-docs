@@ -15,6 +15,7 @@
 const sidebars = {
   docsSidebar: [
     'introduction/index',
+    'comparison',
     // {
     //   // type: 'category',
     //   label: 'Introduction',
