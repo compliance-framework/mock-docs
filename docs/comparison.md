@@ -23,7 +23,7 @@ The tables compare alternatives with a self-hosted CCF deployment. These facts a
 | Automation and setup | You deploy the components and configure CCF Plugins, credentials, schedules, and CCF Policies. The CCF Agent runs plugins and evaluates collected data against policies. |
 | Extension | You can write plugins and policies for your systems. This flexibility requires engineering and operational ownership. |
 
-Sources: [API overview and deployment](https://github.com/compliance-framework/api/blob/main/README.md), [API license](https://github.com/compliance-framework/api/blob/main/LICENSE), and [CCF Agent configuration and plugins](https://github.com/compliance-framework/agent/blob/main/README.md). For interchange limits, see [OSCAL import and export](../api_versioned_docs/version-0.21/oscal-import-export.md).
+Sources: [API overview and deployment](https://github.com/compliance-framework/api/blob/main/README.md), [API license](https://github.com/compliance-framework/api/blob/main/LICENSE), and [CCF Agent configuration and plugins](https://github.com/compliance-framework/agent/blob/main/README.md).
 
 ## Managed compliance platforms
 
@@ -66,6 +66,5 @@ Compare total cost over the same period: subscription or support, hosting, imple
 
 ## Related
 
-- [CCF introduction](./introduction/index.md)
 - [OSCAL concepts](./oscal/index.md)
 - [Glossary](./glossary.md)
